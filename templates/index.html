@@ -18,6 +18,10 @@
         <h2>Python Qualifier UI</h2>
         <form method="post">
             <input type="text" name="user_input" placeholder="Enter something..." required>
+            <select name="option">
+                <option value="echo">Echo</option>
+                <option value="reverse">Reverse</option>
+            </select>
             <button type="submit">Submit</button>
         </form>
         {% if result %}

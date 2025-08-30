@@ -7,10 +7,12 @@ app = Flask(__name__)
 def index():
     result = None
     if request.method == 'POST':
-        # Example: get input from form and process with main.py logic
         user_input = request.form.get('user_input')
-        # Replace the next line with actual function call from main.py
-        result = main.process_input(user_input) if hasattr(main, 'process_input') else f"Echo: {user_input}"
+        option = request.form.get('option')
+        if option == 'reverse':
+            result = user_input[::-1]
+        else:
+            result = main.process_input(user_input) if hasattr(main, 'process_input') else f"Echo: {user_input}"
     return render_template('index.html', result=result)
 
 if __name__ == '__main__':
