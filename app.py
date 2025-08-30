@@ -9,10 +9,12 @@ def index():
     if request.method == 'POST':
         user_input = request.form.get('user_input')
         option = request.form.get('option')
+        input_type = request.form.get('type')
         if option == 'reverse':
-            result = user_input[::-1]
+            processed = user_input[::-1]
         else:
-            result = main.process_input(user_input) if hasattr(main, 'process_input') else f"Echo: {user_input}"
+            processed = main.process_input(user_input) if hasattr(main, 'process_input') else f"Echo: {user_input}"
+        result = f"Type: {input_type} | {processed}"
     return render_template('index.html', result=result)
 
 if __name__ == '__main__':

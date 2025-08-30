@@ -6,7 +6,10 @@
     <title>Basic UI</title>
     <style>
         body { font-family: Arial, sans-serif; margin: 40px; background: #f4f4f4; }
-        .container { background: #fff; padding: 30px; border-radius: 8px; max-width: 400px; margin: auto; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    .container { background: #fff; padding: 30px; border-radius: 8px; max-width: 400px; margin: auto; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    header, footer { text-align: center; padding: 10px 0; background: #007bff; color: #fff; border-radius: 8px 8px 0 0; }
+    footer { border-radius: 0 0 8px 8px; margin-top: 20px; font-size: 0.95em; background: #222; }
+    label { display: block; margin-top: 10px; }
         input[type=text] { width: 100%; padding: 10px; margin: 10px 0; border-radius: 4px; border: 1px solid #ccc; }
         button { padding: 10px 20px; border: none; border-radius: 4px; background: #007bff; color: #fff; cursor: pointer; }
         button:hover { background: #0056b3; }
@@ -15,10 +18,19 @@
 </head>
 <body>
     <div class="container">
-        <h2>Python Qualifier UI</h2>
+        <header>
+            <h1>Python Qualifier App</h1>
+        </header>
         <form method="post">
-            <input type="text" name="user_input" placeholder="Enter something..." required>
-            <select name="option">
+            <label for="user_input">Input:</label>
+            <input type="text" id="user_input" name="user_input" placeholder="Enter something..." required>
+            <label for="type">Type:</label>
+            <select id="type" name="type">
+                <option value="text">Text</option>
+                <option value="number">Number</option>
+            </select>
+            <label for="option">Action:</label>
+            <select id="option" name="option">
                 <option value="echo">Echo</option>
                 <option value="reverse">Reverse</option>
             </select>
@@ -27,6 +39,9 @@
         {% if result %}
             <div class="result">Result: {{ result }}</div>
         {% endif %}
+        <footer>
+            &copy; 2025 Python Qualifier | Simple UI Demo
+        </footer>
     </div>
 </body>
 </html>
