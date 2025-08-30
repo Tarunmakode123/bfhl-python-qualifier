@@ -13,6 +13,11 @@
             background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
             color: #fff;
             font-family: 'Inter', Arial, sans-serif;
+            transition: background 0.3s, color 0.3s;
+        }
+        body.light-mode {
+            background: linear-gradient(135deg, #f4f4f4 0%, #e0e7ef 100%);
+            color: #222;
         }
         .main-section {
             display: flex;
@@ -118,6 +123,12 @@
     </style>
 </head>
 <body>
+    <div style="position: absolute; top: 20px; right: 30px;">
+        <label style="display: flex; align-items: center; cursor: pointer;">
+            <input type="checkbox" id="theme-toggle" style="width: 40px; height: 20px; accent-color: #2186eb; margin-right: 10px;">
+            <span id="theme-label" style="color: #b0c4d4;">Dark Mode</span>
+        </label>
+    </div>
     <div class="main-section">
         <div class="big-heading">The #1 Professional Network<br>for Python Qualifier Agents</div>
         <div class="subheading">Where professionals build, find, and use Python agents that get real work done.</div>
@@ -149,4 +160,34 @@
     </div>
     <div class="footer">&copy; 2025 Python Qualifier | Simple UI Demo</div>
 </body>
+<script>
+    // Theme toggle logic
+    const toggle = document.getElementById('theme-toggle');
+    const label = document.getElementById('theme-label');
+    function setTheme(isLight) {
+        if (isLight) {
+            document.body.classList.add('light-mode');
+            label.textContent = 'Light Mode';
+        } else {
+            document.body.classList.remove('light-mode');
+            label.textContent = 'Dark Mode';
+        }
+    }
+    // Remember theme in localStorage
+    toggle.addEventListener('change', function() {
+        setTheme(toggle.checked);
+        localStorage.setItem('theme', toggle.checked ? 'light' : 'dark');
+    });
+    // On load, set theme from localStorage
+    window.onload = function() {
+        const theme = localStorage.getItem('theme');
+        if (theme === 'light') {
+            toggle.checked = true;
+            setTheme(true);
+        } else {
+            toggle.checked = false;
+            setTheme(false);
+        }
+    };
+</script>
 </html>
