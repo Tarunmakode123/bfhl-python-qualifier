@@ -1,3 +1,6 @@
+def process_input(user_input):
+    # Placeholder: echo input, or add logic as needed
+    return f"You entered: {user_input}"
 import requests
 
 # Step 1: Generate webhook
