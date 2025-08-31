@@ -1,3 +1,5 @@
+# Simple feature for Git learning
+print("Hello, World! (feature test)")
 def process_input(user_input):
     # Placeholder: echo input, or add logic as needed
     return f"You entered: {user_input}"
