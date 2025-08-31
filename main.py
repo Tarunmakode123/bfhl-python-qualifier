@@ -1,3 +1,10 @@
+import datetime
+
+def print_datetime():
+    now = datetime.datetime.now()
+    print(f"Current date and time: {now}")
+
+print_datetime()
 # Simple feature for Git learning
 print("Hello, World! (feature test)")
 def process_input(user_input):
