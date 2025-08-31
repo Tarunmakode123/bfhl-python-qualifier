@@ -3,25 +3,143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Basic UI</title>
+    <title>Python Qualifier App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: Arial, sans-serif; margin: 40px; background: #f4f4f4; }
-    .container { background: #fff; padding: 30px; border-radius: 8px; max-width: 400px; margin: auto; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-    header, footer { text-align: center; padding: 10px 0; background: #007bff; color: #fff; border-radius: 8px 8px 0 0; }
-    footer { border-radius: 0 0 8px 8px; margin-top: 20px; font-size: 0.95em; background: #222; }
-    label { display: block; margin-top: 10px; }
-        input[type=text] { width: 100%; padding: 10px; margin: 10px 0; border-radius: 4px; border: 1px solid #ccc; }
-        button { padding: 10px 20px; border: none; border-radius: 4px; background: #007bff; color: #fff; cursor: pointer; }
-        button:hover { background: #0056b3; }
-        .result { margin-top: 20px; font-weight: bold; }
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            color: #fff;
+            font-family: 'Inter', Arial, sans-serif;
+            transition: background 0.3s, color 0.3s;
+        }
+        body.light-mode {
+            background: linear-gradient(135deg, #f4f4f4 0%, #e0e7ef 100%);
+            color: #222;
+        }
+        .main-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 90vh;
+        }
+        .big-heading {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+        .subheading {
+            font-size: 1.3rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: #b0c4d4;
+        }
+        .cta-btn {
+            background: #2186eb;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 0.9rem 2.2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 2.5rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .cta-btn:hover {
+            background: #1861a6;
+        }
+        .search-bar {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+            justify-content: center;
+        }
+        .search-bar input[type="text"], .search-bar select {
+            padding: 0.7rem 1rem;
+            border-radius: 5px;
+            border: none;
+            font-size: 1rem;
+            outline: none;
+        }
+        .search-bar input[type="text"] {
+            width: 250px;
+        }
+        .form-section {
+            background: rgba(255,255,255,0.07);
+            padding: 2rem 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.15);
+            margin-bottom: 2rem;
+            width: 100%;
+            max-width: 400px;
+        }
+        .form-section label {
+            color: #b0c4d4;
+            margin-top: 1rem;
+            display: block;
+        }
+        .form-section input[type="text"], .form-section select {
+            width: 100%;
+            padding: 0.7rem 1rem;
+            margin: 0.5rem 0 1rem 0;
+            border-radius: 5px;
+            border: none;
+            font-size: 1rem;
+            outline: none;
+        }
+        .form-section button {
+            width: 100%;
+            padding: 0.8rem;
+            border-radius: 5px;
+            border: none;
+            background: #2186eb;
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .form-section button:hover {
+            background: #1861a6;
+        }
+        .result {
+            margin-top: 1.5rem;
+            font-weight: bold;
+            color: #fff;
+            text-align: center;
+        }
+        .footer {
+            text-align: center;
+            padding: 1.2rem 0 0.7rem 0;
+            color: #b0c4d4;
+            font-size: 1rem;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Python Qualifier App</h1>
-        </header>
-        <form method="post">
+    <div style="position: absolute; top: 20px; right: 30px;">
+        <label style="display: flex; align-items: center; cursor: pointer;">
+            <input type="checkbox" id="theme-toggle" style="width: 40px; height: 20px; accent-color: #2186eb; margin-right: 10px;">
+            <span id="theme-label" style="color: #b0c4d4;">Dark Mode</span>
+        </label>
+    </div>
+    <div class="main-section">
+        <div class="big-heading">The #1 Professional Network<br>for Python Qualifier Agents</div>
+        <div class="subheading">Where professionals build, find, and use Python agents that get real work done.</div>
+        <button class="cta-btn" onclick="alert('Sign up functionality coming soon!')">Sign up for free</button>
+        <div class="search-bar">
+            <input type="text" placeholder="Search agents..." disabled>
+            <select disabled>
+                <option>Filter by tag...</option>
+            </select>
+        </div>
+        <form class="form-section" method="post">
             <label for="user_input">Input:</label>
             <input type="text" id="user_input" name="user_input" placeholder="Enter something..." required>
             <label for="type">Type:</label>
@@ -39,9 +157,37 @@
         {% if result %}
             <div class="result">Result: {{ result }}</div>
         {% endif %}
-        <footer>
-            &copy; 2025 Python Qualifier | Simple UI Demo
-        </footer>
     </div>
+    <div class="footer">&copy; 2025 Python Qualifier | Simple UI Demo</div>
 </body>
+<script>
+    // Theme toggle logic
+    const toggle = document.getElementById('theme-toggle');
+    const label = document.getElementById('theme-label');
+    function setTheme(isLight) {
+        if (isLight) {
+            document.body.classList.add('light-mode');
+            label.textContent = 'Light Mode';
+        } else {
+            document.body.classList.remove('light-mode');
+            label.textContent = 'Dark Mode';
+        }
+    }
+    // Remember theme in localStorage
+    toggle.addEventListener('change', function() {
+        setTheme(toggle.checked);
+        localStorage.setItem('theme', toggle.checked ? 'light' : 'dark');
+    });
+    // On load, set theme from localStorage
+    window.onload = function() {
+        const theme = localStorage.getItem('theme');
+        if (theme === 'light') {
+            toggle.checked = true;
+            setTheme(true);
+        } else {
+            toggle.checked = false;
+            setTheme(false);
+        }
+    };
+</script>
 </html>
